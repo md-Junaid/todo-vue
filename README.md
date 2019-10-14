@@ -13,4 +13,7 @@ npm run serve
 
 # Build for production
 npm run build
+
+# Run E2E testing
+npm run test
 ```

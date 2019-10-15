@@ -1,17 +1,48 @@
 {
-    "src_folders" : ["tests"],
-  
-    "webdriver" : {
-      "start_process": true,
-      "server_path": "node_modules/.bin/chromedriver",
-      "port": 9515
+  "src_folders" : ["tests"],
+
+  "test_workers": {
+    "enabled": true,
+    "workers": "auto"
+  },
+
+  "webdriver" : {
+    "start_process": true
+  },
+
+  "test_settings" : {
+    "default" : {
+      "silent": true,
+      "selenium_port": 9515,
+      "selenium_host": "localhost",
+      "webdriver": {
+        "port": 9515,
+        "server_path": "node_modules/.bin/chromedriver",
+        "host": "localhost"
+      },
+      "filter": ["tests"],
+      "desiredCapabilities" : {
+        "browserName" : "chrome",
+        "loggingPrefs": {"driver": "INFO", "server": "OFF", "browser": "INFO"}
+      }
     },
-  
-    "test_settings" : {
-      "default" : {
-        "desiredCapabilities": {
-          "browserName": "chrome"
-        }
+
+    "firefox" : {
+      "selenium_port": 4444,
+      "selenium_host": "localhost",
+      "webdriver": {
+        "server_path": "node_modules/.bin/geckodriver",
+        "port": 4444,
+        "silent": false,
+        "cli_args": [
+          "--log", "debug"
+        ]
+      },
+
+      "desiredCapabilities" : {
+        "browserName" : "firefox",
+        "acceptInsecureCerts" : true
       }
     }
   }
+}
